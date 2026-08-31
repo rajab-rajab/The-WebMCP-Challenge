@@ -1,0 +1,11 @@
+{
+  "name": "reliefmesh",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Human-approved food rescue coordination with WebMCP.",
+  "scripts": {
+    "dev": "python dev_server.py",
+    "start": "python dev_server.py",
+    "build": "node build.js"
+  }
+}

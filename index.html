@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ReliefMesh — human-approved food rescue coordination with WebMCP." />
+    <title>ReliefMesh | Food rescue, coordinated</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="ReliefMesh home"><span class="brand-mark">R</span>ReliefMesh</a>
+      <div class="live"><span></span> Interactive demo</div>
+      <button class="ghost" id="openTools">WebMCP tools <kbd>5</kbd></button>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">FOOD RESCUE OPERATIONS</p>
+          <h1>Turn surplus into <em>tonight’s</em> meals.</h1>
+          <p class="lead">A shared workspace where people set the priorities and agents make complex, explainable rescue plans—never silently committing an allocation.</p>
+        </div>
+        <aside class="impact-card">
+          <p>Potentially rescued today</p>
+          <strong id="potentialMeals">184</strong><span>meals</span>
+          <div class="progress"><i></i></div>
+          <small>3 donors · 3 community partners · 2 active drivers</small>
+        </aside>
+      </section>
+
+      <aside class="demo-notice" aria-label="Demo data notice"><strong>Demo environment</strong><span>This challenge build uses realistic seeded data. It records approvals locally and does not contact donors, drivers, or community partners.</span></aside>
+
+      <section class="command-bar" aria-label="Plan actions">
+        <div><span class="dot"></span><b>Agent-ready workspace</b><small>Ask an agent to assess needs, draft a plan, or stage a safe allocation.</small></div>
+        <button class="primary" id="planButton">Build rescue plan <span>→</span></button>
+      </section>
+
+      <section class="grid">
+        <article class="panel donors-panel">
+          <div class="panel-head"><div><p class="eyebrow">AVAILABLE NOW</p><h2>Surplus offers</h2></div><span class="count">3 live</span></div>
+          <div id="donorList" class="offer-list"></div>
+        </article>
+        <article class="panel needs-panel">
+          <div class="panel-head"><div><p class="eyebrow">COMMUNITY PRIORITY</p><h2>Partner needs</h2></div><button class="text-button" id="priorityButton">Sort by urgency</button></div>
+          <div id="needList" class="need-list"></div>
+        </article>
+      </section>
+
+      <section class="plan-section" id="planSection">
+        <div class="section-title"><div><p class="eyebrow">HUMAN-IN-THE-LOOP</p><h2>Rescue plan</h2></div><span id="planStatus" class="status neutral">Waiting for a plan</span></div>
+        <div id="emptyPlan" class="empty-plan"><div class="empty-icon">✦</div><h3>No allocation staged</h3><p>Create a plan to see a transparent match rationale, then approve it only when it looks right.</p><button class="secondary" id="emptyPlanButton">Build rescue plan</button></div>
+        <div id="planCard" hidden></div>
+      </section>
+
+      <section class="how">
+        <div><p class="eyebrow">WHY WEBMCP</p><h2>Agents get capabilities, not a maze of clicks.</h2></div>
+        <ol>
+          <li><b>1</b><div><strong>Inspect context</strong><span>Read live food offers and partner constraints.</span></div></li>
+          <li><b>2</b><div><strong>Propose with reasons</strong><span>Match meals by urgency, dietary fit, and pickup window.</span></div></li>
+          <li><b>3</b><div><strong>Stage, then approve</strong><span>Only a person can commit an allocation.</span></div></li>
+        </ol>
+      </section>
+    </main>
+    <dialog id="toolsDialog"><div class="dialog-head"><div><p class="eyebrow">REGISTERED CAPABILITIES</p><h2>WebMCP tool map</h2></div><button class="close" id="closeTools" aria-label="Close">×</button></div><p class="dialog-intro">These structured tools are registered when the browser supports WebMCP. Every write action is reflected visibly in this workspace.</p><div id="toolList" class="tool-list"></div><div class="dialog-footer"><span id="apiState"></span><button class="secondary" id="closeToolsBottom">Done</button></div></dialog>
+    <template id="planTemplate"><div class="plan-card"><div class="plan-summary"><div><span class="plan-kicker">DRAFT · HUMAN REVIEW REQUIRED</span><h3><span id="planMealCount"></span> meals, matched with care</h3><p id="planReason"></p></div><div class="plan-score"><span>Plan confidence</span><strong id="planScore"></strong></div></div><div id="allocationList" class="allocation-list"></div><div class="plan-actions"><small>Nothing has been sent. Review the details before you commit this plan.</small><button class="primary" id="approveButton">Approve allocation <span>→</span></button></div></div></template>
+    <script src="app.js"></script>
+  </body>
+</html>
