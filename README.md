@@ -4,6 +4,8 @@
 
 **Live demo:** [reliefmesh-food-rescue-demo.rajab-baig.chatgpt.site](https://reliefmesh-food-rescue-demo.rajab-baig.chatgpt.site)
 
+**Demo video:** [Watch on YouTube](https://youtu.be/VRzxNNWRqzY)
+
 ReliefMesh is an agent-native coordination workspace for food-rescue teams. It shows how a person and an AI agent can collaborate on time-sensitive allocation decisions: the agent reads structured surplus and partner-need context, proposes a plan with clear reasoning, and can stage a plan for review. A human remains in control of every approval.
 
 The project was created for **The WebMCP Challenge**.

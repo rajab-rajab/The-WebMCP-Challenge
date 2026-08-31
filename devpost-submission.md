@@ -18,6 +18,20 @@ ReliefMesh exposes structured, scoped WebMCP tools so an agent can inspect curre
 
 The workflow demonstrates a practical agent-native web pattern for high-consequence coordination: agents reduce cognitive load and make a transparent recommendation; people retain authority to make the final decision. In a real food-rescue service, this could reduce time-to-match while preserving accountability.
 
+I was inspired by the amount of good food that can go to waste while community kitchens and shelters still need meals. Matching food to the right place is not only about quantity. It also depends on time, dietary needs, and whether a person has checked the plan. I wanted to explore how an AI agent could help with this work without making decisions by itself.
+
+ReliefMesh is a food-rescue coordination demo. It shows food offers, partner needs, meal quantities, dietary fit, and pickup windows. An agent can inspect this information and suggest a rescue plan. The plan is shown clearly in the app before approval. A person must review it and give the exact `HUMAN_APPROVED` confirmation before the app records approval.
+
+We built ReliefMesh as a simple web app with HTML, CSS, and JavaScript. The app uses WebMCP through `document.modelContext.registerTool` to register five tools: inspecting rescue context, proposing a plan, staging an allocation, approving an allocation, and generating a pickup manifest. We deployed the project on ChatGPT Sites and added the headers needed for WebMCP. We used Codex to help plan, build, test, document, and deploy the project.
+
+The main challenge was making the AI useful without giving it too much control. We separated planning from approval so that the agent can suggest and stage a plan, but cannot make a commitment on its own. Another challenge was testing WebMCP in a supported browser. We checked that `document.modelContext` was available and that all five tools were registered before recording the demo.
+
+We are proud that ReliefMesh has a complete working flow from food offers to local approval. We are also proud of the safety design: the plan is visible before approval, the confirmation must be explicit, and the demo never sends a real-world dispatch or notification.
+
+We learned that good agent experiences need clear boundaries. A tool should say exactly what it can do, what information it uses, and when a person must step in. We also learned how browser permissions, isolation headers, and structured tool inputs affect WebMCP. The biggest lesson was that human approval is not a limitation; it is an important part of a safe workflow.
+
+The current version uses seeded demo data and records approval only in the browser. Next, we would add secure user roles for coordinators, donors, drivers, and community partners; live inventory and pickup availability; route planning; a server-side approval history; and partner notifications that happen only after verified human approval. These features would require careful privacy, security, and operational testing before use with real organizations.
+
 ## How We Used AI
 
 The product’s agent capability is implemented through five WebMCP Imperative API tools. They return structured rescue context and an explainable plan, while the sensitive approval capability requires the exact `HUMAN_APPROVED` confirmation. Read-only tools are annotated accordingly, and context/planning operations use untrusted-content hints.
@@ -57,7 +71,7 @@ https://github.com/rajab-rajab/The-WebMCP-Challenge
 
 ## Demo Video
 
-TODO: Upload the public YouTube recording using `DEMO_VIDEO_SCRIPT.md`, then paste the link here and into the Devpost form.
+https://youtu.be/VRzxNNWRqzY
 
 ## Screenshot Shot List
 
